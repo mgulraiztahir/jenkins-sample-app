@@ -20,7 +20,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh 'docker images -a -q'
+          sh 'docker rmi -f $(docker images -aq)'
           sh 'docker build -t docker_jenkins_image:${IMAGE_TAG} .'
         }
       }
